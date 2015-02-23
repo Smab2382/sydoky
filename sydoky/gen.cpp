@@ -6,15 +6,13 @@
 using namespace std;
 gen::gen()
 {
-
-
 }
 class pole
 {
 int p[9][9];
 public:
-void in(int i,int j,int z){p[i][j]=z;};
-int out(int i,int j){return p[i][j];};
+void in(int i,int j,int z){p[i][j]=z;}
+int out(int i,int j){return p[i][j];}
 };
 pole g(int slognost)
 {int r=60;pole pol;
@@ -77,5 +75,28 @@ for(int j=0;j<9;j++)
     {pol.in(j,z,i[j][z]);}
 }
     return pol;
+}
+
+
+bool check(pole pol)
+{int i[9][9];
+    for(int j=0;j<9;j++)
+    {for(int z=0;z<9;z++)
+        {i[j][z]=pol.out(j,z);}
+    }
+
+    for(int j=0;j<9;j++)
+    {bool b[9]={0,0,0,0,0,0,0,0,0};
+        for(int z=0;z<9;z++)
+        {if(i[j][z]>0)
+            {
+             if(b[i[j][z]-1]>0)
+               {b[i[j][z]-1]=1;}else{return 0;};
+            }
+            else{return 0;};
+        }
+
+    }
+return 1;
 }
 
