@@ -1,14 +1,21 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include <QtGui>
+#include <QVBoxLayout>
+#include <QMainWindow>
+#include <QCheckBox>
+#include <QDialog>
+#include  <QButtonGroup>
+#include <QToolButton>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+
+
+#include <QComboBox>
+
+MainWindow::MainWindow()
 {
-    ui->setupUi(this);
+
 }
 
 MainWindow::~MainWindow()
 {
-    delete ui;
 }
