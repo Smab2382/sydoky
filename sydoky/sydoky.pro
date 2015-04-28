@@ -24,3 +24,6 @@ HEADERS  += mainwindow.h \
     polewidget.h
 
 FORMS    += mainwindow.ui
+
+OTHER_FILES += \
+    red.png

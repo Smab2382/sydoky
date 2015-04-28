@@ -123,6 +123,58 @@ bool poleWidget::check()
 
 return 1;
 }
+bool poleWidget::checkez()
+{int i[9][9];
+    for(int j=0;j<n*n;j++)
+    {for(int z=0;z<n*n;z++)
+        {i[j][z]=out(j,z);}
+    }
+
+    for(int j=0;j<n*n;j++)
+    {bool b[9]={0,0,0,0,0,0,0,0,0};
+        for(int z=0;z<n*n;z++)
+        {if(i[j][z]>0)
+            {
+             if(b[i[j][z]-1]==0)
+               {b[i[j][z]-1]=1;}else{return 0;};
+            }
+        }
+
+    }
+
+    for(int j=0;j<n*n;j++)
+    {bool b[9]={0,0,0,0,0,0,0,0,0};
+        for(int z=0;z<n*n;z++)
+        {if(i[z][j]>0)
+            {
+             if(b[i[z][j]-1]==0)
+               {b[i[z][j]-1]=1;}else{return 0;};
+            }
+        }
+
+    }
+
+    for(int j=0;j<n;j++)
+    {
+        for(int z=0;z<n;z++)
+        {bool b[9]={0,0,0,0,0,0,0,0,0};
+            for(int f=j*n;f<j*n+n;f++)
+            {
+                 for(int g=z*n;g<z*n+n;g++)
+                 {
+                     if(i[f][g]>0)
+                                 {
+                                  if(b[i[f][g]-1]==0)
+                                    {b[i[f][g]-1]=1;}else{return 0;};
+                                 }
+                 }
+            }
+        }
+
+    }
+
+return 1;
+}
 void poleWidget::checkw()
 {
     if(check())

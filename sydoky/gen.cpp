@@ -2,28 +2,15 @@
 
 #include "counter.h"
 #include <QDebug>
-Counter1::Counter1(QObject *parent) :
-    QObject(parent)
+void Pushbut::setValue()
 {
-    m_value=0;
+    emit ValueChanged(m_value);
 }
-void Counter1::print()
+void Pushbut::set(int temp)
 {
-    qDebug()<<m_value;
+     m_value=temp;
 }
-void Counter1::setValue(int value)
-{
-    if(m_value==value)
-        return;
-    int old_value=m_value;
-    m_value=value;
-    emit ValueChanged(old_value,m_value);
-}
-void Counter1::set(int temp)
-{
-     v_value=temp;
-}
-int Counter1::value()
+int Pushbut::value()
 {
     return m_value;
 }

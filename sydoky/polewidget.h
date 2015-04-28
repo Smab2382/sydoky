@@ -15,9 +15,9 @@ public:
     void g(int slognost);
     void setn(int t);
     bool check();
+    bool checkez();
     void pr();
 signals:
-
 public slots:
  void checkw();
 };

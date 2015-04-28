@@ -2,22 +2,19 @@
 #define GEN_H
 
 #include <QObject>
+#include <QPushButton>
 
-class Counter1 : public QObject
+class Pushbut : public QPushButton
 {
     Q_OBJECT
-
     int m_value;
-    int v_value;
 public:
-    explicit Counter1(QObject *parent = 0);
     int value();
 signals:
-    void ValueChanged(int old_value,int new_value);
+    void ValueChanged(int value);
 public slots:
     void set(int temp);
-    void setValue(int value);
-    void print();
+    void setValue();
 
 };
 #endif // GEN_H
