@@ -10,16 +10,21 @@
 #include <QMenu>
 #include <QMenuBar>
 #include <QPalette>
+#include <QTime>
 #include "polewidget.h"
 
 void MainWindow::setcomplexity(int t){complexity=t;}
+
 void  MainWindow::setezmod(bool b){ezmod=b;}
+
 void  MainWindow::setbmod(bool b){bmod=b;}
+
  void MainWindow::setn(int t){n=t+2;}
 
  void MainWindow::pri(){qDebug()<<sim;}
 
 void MainWindow::setnom(int t){nom=t;}
+
 void MainWindow::setsim(int t){sim=t;}
 
 void MainWindow::setpole()
@@ -42,7 +47,7 @@ void MainWindow::setpole()
  void  MainWindow::newpol()
  {
         for(int i=0;i<3;i++){for(int g=0;g<3;g++){forwardBtn[i][g]->setStyleSheet("QPushButton { background-color:; }");}};
-     for(int i=0;i<n*n;i++){simvol[i]=rand()%50+25;};
+     for(int i=0;i<n*n;i++){simvol[i]=rand()%50+25;for(int g=0;g<i;g++){if(simvol[i]==simvol[g]){i--;};};};
        for(int i=0;i<3;i++){for(int g=0;g<3;g++){simbtn[i][g]->setVisible(0);}};
         for(int i=0;i<n;i++){for(int g=0;g<n;g++){simbtn[i][g]->setVisible(1);}};
           for(int i=0;i<n;i++){for(int g=0;g<n;g++){QString s=""; s.push_back(simvol[i*n+g]+49);simbtn[i][g]->setText(s);
@@ -68,8 +73,9 @@ segBtn->g(complexity);
   this->setFixedSize(35*n*n,30*n*n+21);
  }
 
+
  void MainWindow::newfunc()
- { QDialog *d=new QDialog(NULL);ezmod=false;bmod=false;
+ { QDialog *d=new QDialog(NULL);ezmod=false;bmod=false;n=2;
      QVBoxLayout *f=new QVBoxLayout;
     d->setLayout(f);
    QComboBox *l1=new QComboBox;
@@ -104,7 +110,8 @@ segBtn->g(complexity);
 
  MainWindow::  MainWindow()
 {segBtn= new poleWidget(this);
-     simd=new QDialog(NULL);
+     simd=new QDialog(NULL);QTime midnight(0,0,0);
+     qsrand(midnight.secsTo(QTime::currentTime()));
      QGridLayout *f=new QGridLayout;
    simd->setLayout(f);
      simd->layout()->setSpacing(0);

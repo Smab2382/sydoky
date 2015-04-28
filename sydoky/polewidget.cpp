@@ -3,6 +3,7 @@
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QDebug>
+#include <QTime>
 poleWidget::poleWidget(QWidget *parent) :
     QWidget(parent)
 { for(int i=0;i<9;i++){for(int j=0;j<9;j++){p[i][j].set(-1);}}
@@ -10,7 +11,8 @@ poleWidget::poleWidget(QWidget *parent) :
 void poleWidget::setn(int t)
 {n=t;}
 void poleWidget::g(int slognost)
-{int y=n*n*n*n;int r=y*60/100;
+{int y=n*n*n*n;int r=y*60/100;QTime midnight(0,0,0);
+    qsrand(midnight.secsTo(QTime::currentTime()));
     int yy=y/20;if (yy<1)yy=2;
         if(slognost==0){r=y-(y*55/100+rand()%yy);};
         if(slognost==1){r=y-(y*50/100+rand()%yy);};

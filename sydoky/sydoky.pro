@@ -10,7 +10,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = sydoky
 TEMPLATE = app
-
+RC_FILE = myicon.rc
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -23,7 +23,9 @@ HEADERS  += mainwindow.h \
     counter.h \
     polewidget.h
 
-FORMS    += mainwindow.ui
+FORMS    +=
 
 OTHER_FILES += \
-    red.png
+    myicon.ico \
+    myicon.rc \
+    setup.exe
