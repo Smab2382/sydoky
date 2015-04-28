@@ -28,4 +28,5 @@ FORMS    +=
 OTHER_FILES += \
     myicon.ico \
     myicon.rc \
-    setup.exe
+    setup.exe \
+    release.rar
