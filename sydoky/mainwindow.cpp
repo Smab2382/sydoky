@@ -46,7 +46,7 @@ void MainWindow::setpole()
 
  void  MainWindow::newpol()
  {
-        for(int i=0;i<3;i++){for(int g=0;g<3;g++){forwardBtn[i][g]->setStyleSheet("QPushButton { background-color:; }");}};
+        for(int i=0;i<9;i++){for(int g=0;g<9;g++){forwardBtn[i][g]->setStyleSheet("QPushButton { background-color:; }");}};
      for(int i=0;i<n*n;i++){simvol[i]=rand()%50+25;for(int g=0;g<i;g++){if(simvol[i]==simvol[g]){i--;};};};
        for(int i=0;i<3;i++){for(int g=0;g<3;g++){simbtn[i][g]->setVisible(0);}};
         for(int i=0;i<n;i++){for(int g=0;g<n;g++){simbtn[i][g]->setVisible(1);}};
