@@ -29,4 +29,5 @@ OTHER_FILES += \
     myicon.ico \
     myicon.rc \
     setup.exe \
-    release.rar
+    release.rar \
+    описание.doc
