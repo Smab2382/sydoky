@@ -4,8 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui opengl
-
+QT       += core gui opengl multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = sydoky
@@ -30,4 +29,7 @@ OTHER_FILES += \
     myicon.rc \
     setup.exe \
     release.rar \
-    описание.doc
+    описание.doc \
+    tempinstall.deb
+
+RESOURCES +=

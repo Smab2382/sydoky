@@ -7,6 +7,10 @@
 poleWidget::poleWidget(QWidget *parent) :
     QWidget(parent)
 { for(int i=0;i<9;i++){for(int j=0;j<9;j++){p[i][j].set(-1);}}
+     wind=new QDialog(NULL);
+     QVBoxLayout *f=new QVBoxLayout;
+    wind->setLayout(f);QLabel *l=new QLabel("win",wind);
+    f->addWidget(l);
 }
 void poleWidget::setn(int t)
 {n=t;}
@@ -180,12 +184,8 @@ return 1;
 void poleWidget::checkw()
 {
     if(check())
-    {
-        QDialog *d=new QDialog(NULL);
-         QVBoxLayout *f=new QVBoxLayout;
-        d->setLayout(f);QLabel *l=new QLabel("win",d);
-       f->addWidget(l);
-    d->show();
+    { 
+    wind->show();
     }
 }
 void poleWidget::pr()

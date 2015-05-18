@@ -6,6 +6,9 @@
 #include <QAction>
 #include <QMenu>
 #include <QComboBox>
+#include <QMediaPlayer>
+#include <QDir>
+#include <QUrl>
 #include "gen.h"
 class poleWidget;
 
@@ -24,6 +27,8 @@ public:
      int sim;
      bool bmod;
      bool ezmod;
+     int val;
+     QMediaPlayer *player;
 private:
      int complexity;
 
@@ -46,5 +51,8 @@ public slots:
        void setbmod(bool b);
        void pri();
        void newfunc();
+       void newfunc2();
+       void newfunc3();
+       void setvalume(int);
 };
 #endif // MAINWINDOW_H

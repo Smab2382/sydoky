@@ -7,10 +7,12 @@
 #include <QAction>
 #include <QLabel>
 #include <QPushButton>
+#include <QSpinBox>
 #include <QMenu>
 #include <QMenuBar>
 #include <QPalette>
 #include <QTime>
+#include<QTimer>
 #include "polewidget.h"
 
 void MainWindow::setcomplexity(int t){complexity=t;}
@@ -106,10 +108,34 @@ segBtn->g(complexity);
      d->show();
 
  }
+ void MainWindow::newfunc2()
+ { QDialog *d=new QDialog(NULL);
+     QVBoxLayout *f=new QVBoxLayout;
+    d->setLayout(f);
+    QSlider* aref=new QSlider(this);
+    aref->setFixedWidth(20);aref->setRange(0,100);
+    aref->setValue(val);
+    aref->setSingleStep(10);
+    f->addWidget(aref);
+     connect(aref,SIGNAL(valueChanged(int)),player, SLOT(setVolume(int)));
+     connect(aref,SIGNAL(valueChanged(int)),this, SLOT(setvalume(int)));
+     d->show();
 
-
+ }
+ void MainWindow::setvalume(int t)
+ {val=t;}
+void MainWindow::newfunc3()
+{ player = new QMediaPlayer;
+    player->setMedia(QUrl::fromLocalFile(QDir::toNativeSeparators("./music/1.mp3")));
+    player->setVolume(val);
+player->play();
+}
  MainWindow::  MainWindow()
-{segBtn= new poleWidget(this);
+{segBtn= new poleWidget(this);QTimer *timer=new QTimer(this);
+     val=50;
+     newfunc3();
+     timer->start(343000);
+   connect(timer,SIGNAL(timeout()), this, SLOT(newfunc3()));
      simd=new QDialog(NULL);QTime midnight(0,0,0);
      qsrand(midnight.secsTo(QTime::currentTime()));
      QGridLayout *f=new QGridLayout;
@@ -121,9 +147,13 @@ segBtn->setGeometry(0,21,0,0);ezmod=false;bmod=false;
     QVBoxLayout *mainLayout = new QVBoxLayout;
     mainLayout->addWidget(segBtn);
     QMenu * mnNew = new QMenu("New");
+     QMenu * mnVolume = new QMenu("Volume");
     QAction *newAction = new QAction("new",mnNew);
+    QAction *newAction2 = new QAction("volume",mnVolume);
         connect(newAction, SIGNAL(triggered()), this, SLOT(newfunc()));
+        connect(newAction2, SIGNAL(triggered()), this, SLOT(newfunc2()));
     this->menuBar()->addAction(newAction);
+    this->menuBar()->addAction(newAction2);
     QGridLayout *l=new QGridLayout;
     for(int i=0;i<9;i++){
     for(int g=0;g<9;g++){forwardBtn[i][g]=new  Pushbut;
@@ -140,7 +170,6 @@ for(int i=0;i<3;i++){for(int g=0;g<3;g++){simbtn[i][g]=new Pushbut;simbtn[i][g]-
               connect(forwardBtn[i][g], SIGNAL( ValueChanged(int)),this, SLOT(setnom(int)));
 
           };};
-
     segBtn->setFixedSize(35*9,30*9);
     this->setFixedSize(35*9,30*9+21);
 }
